@@ -1,0 +1,19 @@
+<ActionBar title="Map">
+    <ActionItem (tap)="onToggleTapped" ios.position="right">
+    </ActionItem>
+</ActionBar>
+<GridLayout rows="auto, *" columns="*">
+
+    <Button row="0" text="Go to detail" (tap)="onNavigateButtonTapped($event)"></Button>
+
+    <ListView row="1" [items]="myItems">
+        <template let-item="item">
+            <StackLayout class="p-4">
+                <Label text="{{'Item '+item.id}}"></Label>
+            </StackLayout>
+        </template>
+    </ListView>
+
+    <MapView #mapView row="1" (mapReady)="onMapReady($event)"></MapView>
+
+</GridLayout>
