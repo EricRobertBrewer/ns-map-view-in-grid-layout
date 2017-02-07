@@ -9,6 +9,8 @@ export class MapComponent {
 
     myItems: MyItem[] = [];
 
+    isMapVisible: boolean = false;
+
     constructor(
         private routerExtensions: RouterExtensions
     ) {
@@ -17,12 +19,18 @@ export class MapComponent {
         }
     }
 
-    onMapReady(event) {
-        console.log("onMapReady():"+event);
+    onToggleTapped(event) {
+        this.isMapVisible = !this.isMapVisible;
     }
 
-    onNavigateButtonTapped(event) {
-        console.log("onNavigateButtonTapped():"+event);
+    onMapReady(event) {
+    }
+
+    onNavigateTapped(event) {
+        this.routerExtensions.navigate(["detail"]);
+    }
+
+    onItemTapped(event) {
         this.routerExtensions.navigate(["detail"]);
     }
 }
