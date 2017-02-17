@@ -6,10 +6,9 @@
 
     <Button row="0" text="Go to detail" (tap)="onNavigateTapped($event)"></Button>
 
-    <MapView #mapView row="1" [visibility]="isMapVisible ? 'visible' : 'collapse'" (mapReady)="onMapReady($event)" android.id="R.id.my_map_view"></MapView>
+    <MapView #mapView row="1" [visibility]="isMapVisible ? 'visible' : 'collapse'" (mapReady)="onMapReady($event)"></MapView>
 
-    <ListView row="1" [visibility]="!isMapVisible ? 'visible' : 'collapse'" [items]="myItems" (itemTap)="onItemTapped($event)"
-        android.id="R.id.my_list_view">
+    <ListView row="1" [visibility]="!isMapVisible ? 'visible' : 'collapse'" [items]="myItems" (itemTap)="onItemTapped($event)" (loaded)="onListViewLoaded($event)">
         <template let-item="item">
             <StackLayout class="p-4">
                 <Label text="{{'Item '+item.id}}"></Label>

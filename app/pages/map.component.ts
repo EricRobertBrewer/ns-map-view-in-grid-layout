@@ -2,6 +2,8 @@ import { Component } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 import { MapView } from "nativescript-google-maps-sdk";
 
+declare var org: any;
+
 @Component({
     templateUrl: "pages/map.html"
 })
@@ -24,6 +26,12 @@ export class MapComponent {
     }
 
     onMapReady(event) {
+    }
+
+    onListViewLoaded(event) {
+        if (event.object.android) {
+            event.object.android.setId(org.nativescript.mapview.R.id.my_list_view);
+        }
     }
 
     onNavigateTapped(event) {
